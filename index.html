@@ -1,1 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Descriptions for SEO and Local Discovery -->
+    <meta name="description" content="Centro Alternativo de Bienestar Físico y Emocional 'Por mi Salud' en San Luis Río Colorado. Fisioterapia, masajes médico-terapéuticos, tanatología y desarrollo personal.">
+    <meta name="author" content="Ma. de Jesús Sánchez Juárez">
+    
+    <title>Por mi Salud | Centro Alternativo de Bienestar Físico y Emocional</title>
 
+    <style>
+        /* CSS Reset & Design Tokens (Botanical Green & Magenta Accent) */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #FAF7F2;      /* Soft Creme Base */
+            --bg-card: #FFFFFF;         /* Crisp White Container */
+            --bg-accent: #EBF3ED;       /* Gentle Botanical Sage */
+            
+            --brand-green: #1E5631;     /* High-Contrast Leaf Green (> 7:1) */
+            --brand-magenta: #AD1457;   /* Deep High-Contrast Magenta (> 4.5:1) */
+            --text-dark: #1C2826;       /* Deep Forest Charcoal */
+            --border-color: #CBD5E1;
+            
+            --max-width: 680px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        /* Language Toggle Bar */
+        .lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .lang-btn {
+            background-color: var(--bg-card);
+            color: var(--brand-green);
+            border: 2px solid var(--brand-green);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background-color: var(--brand-green);
+            color: #FFFFFF;
+        }
+
+        /* Language Visibility Rules */
+        html[lang="es"] [lang="en"] { display: none !important; }
+        html[lang="en"] [lang="es"] { display: none !important; }
+
+        /* Header Card */
+        header {
+            background-color: var(--bg-card);
+            border: 2px solid var(--brand-green);
+            border-radius: 12px;
+            padding: 24px 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(30, 86, 49, 0.08);
+        }
+
+        .lotus-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 12px auto;
+            display: block;
+        }
+
+        .business-title {
+            color: var(--brand-green);
+            font-size: 1.3rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .business-slogan {
+            color: var(--brand-magenta);
+            font-size: 1.1rem;
+            font-style: italic;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .practitioner-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .practitioner-titles {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-green);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        /* Contact Action Buttons Grid */
+        .cta-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        @media (min-width: 480px) {
+            .cta-grid {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .btn-call {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--brand-green);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            width: 100%;
+            max-width: 240px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--brand-magenta);
+            color: #FFFFFF;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            width: 100%;
+            max-width: 240px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-call:hover, .btn-whatsapp:hover {
+            opacity: 0.9;
+            text-decoration: underline;
+        }
+
+        /* Sections & Cards */
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--brand-green);
+            border-bottom: 2px solid var(--brand-green);
+            padding-bottom: 6px;
+            margin: 24px 0 14px 0;
+            font-weight: 800;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--brand-magenta);
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .service-card-green {
+            border-left-color: var(--brand-green);
+        }
+
+        .service-card h3 {
+            color: var(--brand-green);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background-color: var(--bg-accent);
+            color: var(--brand-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(30, 86, 49, 0.2);
+        }
+
+        .tag-magenta {
+            background-color: #FCE4EC;
+            color: var(--brand-magenta);
+            border-color: rgba(173, 20, 87, 0.2);
+        }
+
+        /* Location Card */
+        .location-card {
+            background-color: var(--bg-accent);
+            border: 2px solid var(--brand-green);
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        .location-card h2 {
+            color: var(--brand-green);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .location-card p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px 0 12px 0;
+            margin-top: 32px;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-dark);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Language Switcher Bar -->
+        <div class="lang-switch" aria-label="Language selection">
+            <button class="lang-btn active" id="btn-es" onclick="setLanguage('es')">Español</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">English</button>
+        </div>
+
+        <!-- Header Landmark -->
+        <header>
+            <!-- SVG Botanical Lotus Icon from Business Card -->
+            <svg class="lotus-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Logo Flor de Loto">
+                <path d="M50 20C50 20 38 35 38 50C38 65 50 75 50 75C50 75 62 65 62 50C62 35 50 20 50 20Z" stroke="#1E5631" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M50 75C40 70 20 62 20 48C20 34 35 32 35 32C35 32 34 48 50 75Z" stroke="#1E5631" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M50 75C60 70 80 62 80 48C80 34 65 32 65 32C65 32 66 48 50 75Z" stroke="#1E5631" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M28 65C18 60 10 52 10 42C10 32 24 32 24 32" stroke="#1E5631" stroke-width="3" stroke-linecap="round"/>
+                <path d="M72 65C82 60 90 52 90 42C90 32 76 32 76 32" stroke="#1E5631" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+
+            <h1 class="business-title">Centro Alternativo de Bienestar Físico y Emocional</h1>
+            <p class="business-slogan">"Por mi Salud"</p>
+            
+            <p class="practitioner-name">Ma. de Jesús Sánchez Juárez</p>
+            <p class="practitioner-titles">Terapeuta Tanatóloga y Coach • Fisioterapia</p>
+
+            <div class="cta-grid">
+                <a href="https://wa.me/526531031480?text=Hola,%20me%20gustar%C3%ADa%20agendar%20una%20consulta" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                    <span lang="es">📱 WhatsApp Directo</span>
+                    <span lang="en">📱 WhatsApp Direct</span>
+                </a>
+                <a href="tel:6535176113" class="btn-call">
+                    <span lang="es">📞 Llamar a Clínica</span>
+                    <span lang="en">📞 Call Clinic</span>
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Services Section 1: Physical Health -->
+            <section>
+                <div lang="es"><h2 class="section-title">Masajes Médico-Terapéuticos</h2></div>
+                <div lang="en"><h2 class="section-title">Medical-Therapeutic Massages</h2></div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div lang="es">
+                            <h3>Tratamientos de Alivio Físico y Muscular</h3>
+                            <p>Terapia especializada para contracturas, reducción de estrés y alivio del dolor localizado.</p>
+                        </div>
+                        <div lang="en">
+                            <h3>Physical & Muscle Relief Treatments</h3>
+                            <p>Specialized therapy for muscle tightness, stress reduction, and targeted pain relief.</p>
+                        </div>
+                        
+                        <div class="tag-list">
+                            <span class="tag tag-magenta">Antiestrés</span>
+                            <span class="tag tag-magenta">Relajante</span>
+                            <span class="tag tag-magenta">Nervio Ciático</span>
+                            <span class="tag tag-magenta">Hombro Dolorido</span>
+                            <span class="tag tag-magenta">Cuello (Contractura)</span>
+                            <span class="tag tag-magenta">Pies Cansados</span>
+                            <span class="tag tag-magenta">Espalda Baja</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section 2: Emotional & Restorative -->
+            <section>
+                <div lang="es"><h2 class="section-title">Terapias Restaurativas y Consejería</h2></div>
+                <div lang="en"><h2 class="section-title">Restorative Therapies & Counseling</h2></div>
+
+                <div class="services-grid">
+                    <div class="service-card service-card-green">
+                        <div lang="es">
+                            <h3>Acompañamiento Emocional y Desarrollo Personal</h3>
+                            <p>Procesos terapéuticos guiados para la superación personal, manejo de emociones y tanatología (tanatología y duelo).</p>
+                        </div>
+                        <div lang="en">
+                            <h3>Emotional Support & Personal Growth</h3>
+                            <p>Guided therapeutic processes for personal growth, emotional management, and grief counseling (thanatology).</p>
+                        </div>
+
+                        <div class="tag-list">
+                            <span class="tag">Reflexivas</span>
+                            <span class="tag">Retrocedimiento</span>
+                            <span class="tag">Consejería</span>
+                            <span class="tag">Talleres de Superación</span>
+                            <span class="tag">Orientación</span>
+                            <span class="tag">Autoestima</span>
+                            <span class="tag">Manejo de Emociones</span>
+                            <span class="tag">Miedo, Fobias e Inseguridad</span>
+                            <span class="tag">Duelo / Tanatología</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Location Landmark -->
+            <section class="location-card">
+                <div lang="es">
+                    <h2>📍 Ubicación de la Clínica</h2>
+                    <p>Av. Quintana Roo 11 y 12 #1105<br>San Luis R.C., Sonora, México</p>
+                    <p style="font-size: 0.85rem; color: #1E5631;">Atención con previa cita por teléfono o WhatsApp.</p>
+                </div>
+                <div lang="en">
+                    <h2>📍 Clinic Location</h2>
+                    <p>Av. Quintana Roo 11 y 12 #1105<br>San Luis R.C., Sonora, Mexico</p>
+                    <p style="font-size: 0.85rem; color: #1E5631;">Appointments scheduled via Phone or WhatsApp.</p>
+                </div>
+                <a href="https://maps.google.com/?q=Av.+Quintana+Roo+11+y+12+1105+San+Luis+Rio+Colorado+Sonora" target="_blank" rel="noopener noreferrer" class="btn-call" style="margin-top: 8px;">
+                    <span lang="es">Ver en Google Maps</span>
+                    <span lang="en">Open in Google Maps</span>
+                </a>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 Centro Alternativo "Por mi Salud" • San Luis R.C., Sonora</p>
+            <p style="font-size: 0.75rem; margin-top: 4px; opacity: 0.8;">Diseño Móvil Accesible (WCAG 2.1 AA Compliant)</p>
+        </footer>
+    </div>
+
+    <!-- Client-side Language Toggle Script -->
+    <script>
+        function setLanguage(lang) {
+            const btnEs = document.getElementById('btn-es');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'en') {
+                document.documentElement.lang = 'en';
+                btnEn.classList.add('active');
+                btnEs.classList.remove('active');
+            } else {
+                document.documentElement.lang = 'es';
+                btnEs.classList.add('active');
+                btnEn.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
