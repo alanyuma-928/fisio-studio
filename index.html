@@ -72,7 +72,11 @@
             color: #FFFFFF;
         }
 
-        /* Language Visibility Rules */
+        .lang-btn:hover, .lang-btn:focus {
+            outline: 2px solid var(--brand-magenta);
+        }
+
+        /* Language Visibility Rules - Spanish Served First */
         html[lang="es"] [lang="en"] { display: none !important; }
         html[lang="en"] [lang="es"] { display: none !important; }
 
@@ -173,7 +177,7 @@
             transition: opacity 0.2s;
         }
 
-        .btn-call:hover, .btn-whatsapp:hover {
+        .btn-call:hover, .btn-whatsapp:hover, .btn-call:focus, .btn-whatsapp:focus {
             opacity: 0.9;
             text-decoration: underline;
         }
@@ -276,8 +280,8 @@
 <body>
 
     <div class="container">
-        <!-- Language Switcher Bar -->
-        <div class="lang-switch" aria-label="Language selection">
+        <!-- Language Switcher Bar (Spanish Selected First) -->
+        <div class="lang-switch" aria-label="Selección de idioma / Language selection">
             <button class="lang-btn active" id="btn-es" onclick="setLanguage('es')">Español</button>
             <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">English</button>
         </div>
@@ -321,11 +325,11 @@
                     <div class="service-card">
                         <div lang="es">
                             <h3>Tratamientos de Alivio Físico y Muscular</h3>
-                            <p>Terapia especializada para contracturas, reducción de estrés y alivio del dolor localizado.</p>
+                            <p>Atención directa para contracturas, dolor de espalda, problemas de nervio ciático y tensión acumulada.</p>
                         </div>
                         <div lang="en">
                             <h3>Physical & Muscle Relief Treatments</h3>
-                            <p>Specialized therapy for muscle tightness, stress reduction, and targeted pain relief.</p>
+                            <p>Specialized therapy for muscle tightness, lower back pain, sciatic nerve relief, and built-up tension.</p>
                         </div>
                         
                         <div class="tag-list">
@@ -350,11 +354,11 @@
                     <div class="service-card service-card-green">
                         <div lang="es">
                             <h3>Acompañamiento Emocional y Desarrollo Personal</h3>
-                            <p>Procesos terapéuticos guiados para la superación personal, manejo de emociones y tanatología (tanatología y duelo).</p>
+                            <p>Sesiones individuales y talleres grupales enfocados en el manejo de emociones, superación personal y acompañamiento en procesos de duelo.</p>
                         </div>
                         <div lang="en">
                             <h3>Emotional Support & Personal Growth</h3>
-                            <p>Guided therapeutic processes for personal growth, emotional management, and grief counseling (thanatology).</p>
+                            <p>Individual sessions and workshops focused on emotional management, personal growth, and grief counseling (thanatology).</p>
                         </div>
 
                         <div class="tag-list">
@@ -392,12 +396,18 @@
         </main>
 
         <footer>
-            <p>© 2026 Centro Alternativo "Por mi Salud" • San Luis R.C., Sonora</p>
-            <p style="font-size: 0.75rem; margin-top: 4px; opacity: 0.8;">Diseño Móvil Accesible (WCAG 2.1 AA Compliant)</p>
+            <div lang="es">
+                <p>© 2026 Centro Alternativo "Por mi Salud" • San Luis R.C., Sonora</p>
+                <p style="font-size: 0.75rem; margin-top: 4px; opacity: 0.8;">Diseño Móvil Accesible (WCAG 2.1 AA Compliant)</p>
+            </div>
+            <div lang="en">
+                <p>© 2026 Centro Alternativo "Por mi Salud" • San Luis R.C., Sonora</p>
+                <p style="font-size: 0.75rem; margin-top: 4px; opacity: 0.8;">Mobile-First Accessible Design (WCAG 2.1 AA Compliant)</p>
+            </div>
         </footer>
     </div>
 
-    <!-- Client-side Language Toggle Script -->
+    <!-- Client-side Language Toggle Script (Defaults to Spanish) -->
     <script>
         function setLanguage(lang) {
             const btnEs = document.getElementById('btn-es');
@@ -407,12 +417,20 @@
                 document.documentElement.lang = 'en';
                 btnEn.classList.add('active');
                 btnEs.classList.remove('active');
+                localStorage.setItem('pormisalud_lang', 'en');
             } else {
                 document.documentElement.lang = 'es';
                 btnEs.classList.add('active');
                 btnEn.classList.remove('active');
+                localStorage.setItem('pormisalud_lang', 'es');
             }
         }
+
+        // Initialize with Norteño Spanish as Default Language
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('pormisalud_lang') || 'es';
+            setLanguage(savedLang);
+        });
     </script>
 </body>
 </html>
